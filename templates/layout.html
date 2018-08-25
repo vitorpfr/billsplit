@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!-- Roboto font - MDL -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+        <meta charset="utf-8"/>
+        <meta content="initial-scale=1, width=device-width" name="viewport"/>
+
+        <!-- http://getbootstrap.com/ -->
+        <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- App's own CSS -->
+        <link href="/static/styles.css" rel="stylesheet"/>
+
+        <!-- http://jquery.com/ -->
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+        <!-- http://getbootstrap.com/ -->
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- http://handlebarsjs.com/ -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+        <!-- app's own JavaScript -->
+        <script src="/static/scripts.js"></script>
+
+        <!-- Material Design Lite - https://getmdl.io/started/ -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+        <!-- Share button icon: https://platform.sharethis.com/get-the-code -->
+        <script src="//platform-api.sharethis.com/js/sharethis.js#property=5b80b0e9d09af600128a4bef&product=inline-share-buttons"></script>
+
+        <title>{% block title %}{% endblock %}</title>
+
+    </head>
+    <body>
+
+        <!-- Always shows a header, even in smaller screens. -->
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+          <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+              <!-- Title -->
+              <span class="mdl-layout-title">Billsplit</span>
+              <!-- Add spacer, to align navigation to the right -->
+              <div class="mdl-layout-spacer"></div>
+              <!-- Navigation. We hide it in small screens. -->
+              <nav class="mdl-navigation mdl-layout--large-screen-only">
+              </nav>
+            </div>
+          </header>
+          <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Billsplit</span>
+            <nav class="mdl-navigation">
+              <a class="mdl-navigation__link" href="/">Split a bill</a>
+              <a class="mdl-navigation__link" href="/about">About</a>
+            </nav>
+          </div>
+          <main class="mdl-layout__content">
+            <div class="page-content">
+            <!-- Your content goes here -->
+
+
+            {% block main %}{% endblock %}
+
+            </div>
+          </main>
+        </div>
+
+    </body>
+</html>

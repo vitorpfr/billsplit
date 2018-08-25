@@ -1,0 +1,61 @@
+/* Styles - Source: pset8 (mashup) distribution code */
+
+/* Allow map to fill viewport */
+.page-content
+{
+
+    /* No margin around these elements */
+    margin: 0;
+
+    /* Small padding within these elements */
+    padding: 1.5%;
+}
+
+/* Stylize text box */
+#q
+{
+    /* Override typeahead.js's transparent background */
+    background-color: #ffffff !important;
+
+    /* Text box's width */
+    width: 300px;
+}
+
+
+#info ul
+{
+    margin-bottom: 0;
+}
+
+#submitbutton{
+  display:block;
+}
+
+
+.card-lesson {
+  margin: 10px;
+  min-width: 200px;
+  min-height: 100px;
+  & > .mdl-card__actions {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+  }
+  & > .mdl-card__title {
+    align-items: flex-start;
+    & > h4 {
+      margin-top: 0;
+    }
+  }
+  & > .mdl-card__title,
+  & > .mdl-card__supporting-text,
+  & > .mdl-card__actions,
+  & > .mdl-card__actions > .mdl-button {
+    color: #fff;
+  }
+}
+
+
+form {
+  display: inline-block;
+}

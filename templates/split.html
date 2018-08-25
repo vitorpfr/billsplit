@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Billsplit
+{% endblock %}
+
+{% block main %}
+<form type="hidden" id="names">
+  {% for item in people %}
+  <input id="customer{{ loop.index - 1 }}" type="hidden" value="{{ item }}">
+  {% endfor %}
+</form>
+
+<div>
+<form id="form" role="form" action="/result" method="post">
+
+<div class="mdl-grid products" id="products">
+  <div class="mdl-cell mdl-cell--4-col card-lesson mdl-card mdl-shadow--2dp product" id="product">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Please describe the item consumed below:</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+
+  Product: &ensp;<div class="mdl-textfield mdl-js-textfield"><input autofocus autocomplete="off" class="mdl-textfield__input" placeholder="e.g. Pepperoni Pizza" name="products[]" type="text"/></div> &ensp;
+  Quantity: &ensp;<div class="mdl-textfield mdl-js-textfield"><input autocomplete="off" class="mdl-textfield__input" type="number" min="1" placeholder="e.g. 1" value="1" name="quantities[]"/></div> &ensp; &ensp;
+  Price: &ensp;<div class="mdl-textfield mdl-js-textfield"><input autocomplete="off" class="mdl-textfield__input" type="number" min="0.01" step="0.01" placeholder="e.g. 29.90" name="values[]"/></div> &ensp; &ensp;
+<br>
+  Who consumed: &ensp;
+<br>
+  {% for item in people %}
+  <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect customer">
+  <input type="checkbox" name="consumed{{ loop.index - 1 }}_0" class="mdl-switch__input" checked>
+  <span class="mdl-switch__label">{{ item }}</span>
+  </label>
+  {% endfor %}
+
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <button type="button" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect delete-row">Remove product</button>
+  </div>
+</div>
+
+
+</div>
+
+
+
+<div>
+<button type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab add-row"><i class="material-icons">add</i></button>
+</div>
+<br>
+If you're also giving some tip, please type the percentage to give (e.g. if paying 15% as tip, insert 15 below):
+<div>
+
+<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="tipswitch">
+  <input type="checkbox" id="tipswitch" name="tipswitch" class="mdl-switch__input" checked>
+  <span class="mdl-switch__label"></span>
+</label>
+
+  <div class="mdl-textfield mdl-js-textfield" style="width:30px;">
+    <input class="mdl-textfield__input" type="text" id="tipvalue" name="tipvalue" value="10" pattern="-?[0-9]*(\.[0-9]+)?">
+    <label class="mdl-textfield__label" for="tipvalue">10</label>
+  </div>
+<br>
+
+</div>
+
+
+
+<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="submitbutton">Split this bill for me!</button>
+
+</form>
+
+{% endblock %}
