@@ -23,7 +23,7 @@ def after_request(response):
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
     return response
-    
+
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
@@ -89,10 +89,12 @@ def result():
 
     # Normalize results from 'consumed' matrix -> calculate the fraction each one consumed
     for column in range(len(consumed[0])):  # for each column
-        sumofcolumn = sum(row[column] for row in consumed)  # get sum of the column
+        sumofcolumn = sum(row[column]
+                          for row in consumed)  # get sum of the column
 
         for row in consumed:  # for each number in the matrix
-            row[column] = row[column] / sumofcolumn  # divide the original value by the total sum of column (normalize column)
+            # divide the original value by the total sum of column (normalize column)
+            row[column] = row[column] / sumofcolumn
 
     # Validation
     # print(people)
@@ -111,9 +113,13 @@ def result():
 
         for j, item in enumerate(products):  # iterate through products
             # addspend(product, quantity, value, fraction consumed)
-            p.addspend(item, int(quantities[j]), float(values[j]), float(consumed[i][j]))
+            p.addspend(item,
+                       int(quantities[j]),
+                       float(values[j]),
+                       float(consumed[i][j]))
 
-        spend[name] = brl(p.totalspend() * tip)  # register this person's total value
+        # register this person's total value
+        spend[name] = brl(p.totalspend() * tip)
         billvalue += p.totalspend() * tip  # add this person's part to total value
 
     # Final validation
@@ -121,3 +127,7 @@ def result():
     # print(billvalue)
 
     return render_template("result.html", people=session['people'], spend=spend, bill=brl(billvalue))
+
+
+if __name__ == "__main__":
+    app.run()
