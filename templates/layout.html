@@ -48,7 +48,17 @@
             <span class="mdl-layout-title">Billsplit</span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
-            <p>{{ g.language }}</p>
+            <p>
+              <div class="mdl-textfield mdl-js-textfield getmdl-select" style="width:100px">
+                  <input type="text" value="" class="mdl-textfield__input" id="sample2" readonly style="border-bottom: 1px solid #fff;">
+                  <input type="hidden" value="" name="sample2">
+                  <label for="sample2" class="mdl-textfield__label" style="color:white;">{{g.language}}</label>
+                  <ul for="sample2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                      <li class="mdl-menu__item" data-val="en">English</li>
+                      <li class="mdl-menu__item" data-val="pt">Portuguese</li>
+                  </ul>
+              </div>
+            </p>
             <!-- Navigation. We hide it in small screens. -->
             <nav class="mdl-navigation mdl-layout--large-screen-only">
             </nav>
