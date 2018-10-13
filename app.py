@@ -2,20 +2,29 @@
 # Vitor Pacheco de Freitas
 # August 2018
 
-from flask import Flask, session, render_template, request
-from flask_session import Session
 from tempfile import mkdtemp
+
+from flask import Flask, session, render_template, request, g
+from flask_babel import Babel
+from flask_babel import gettext
+from flask_session import Session
 
 # Import class created to handle spend and format function
 from helpers import Person
 from helpers import brl
 
-
 # Configure application
 app = Flask(__name__)
+babel = Babel(app)
+app.jinja_env.globals.update(_=gettext, g=g)
+
+
+@app.before_request
+def before_request():
+    g.language = get_locale()
+
 
 # Ensure responses aren't cached
-
 
 @app.after_request
 def after_request(response):
@@ -25,11 +34,39 @@ def after_request(response):
     return response
 
 
+# Get user's language
+
+
+@babel.localeselector
+def get_locale():
+    language = session.get('language', None)
+    if language is not None:
+        return language
+    for lang in request.accept_languages.values():
+        if lang[:2] in ['pt', 'en']:
+            language = lang[:2]
+            break
+
+    return language
+
+
+@app.route("/getlanguage")
+def get_language():
+    return get_locale()
+
+
+@app.route("/setlanguage/<l>")
+def set_language(l):
+    session['language'] = l
+    return l
+
+
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
 
 # Index page - user inputs people who will pay the bill
 
@@ -130,4 +167,4 @@ def result():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

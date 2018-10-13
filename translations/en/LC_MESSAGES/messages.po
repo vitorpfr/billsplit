@@ -1,0 +1,112 @@
+# English translations for PROJECT.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-10-13 00:25-0400\n"
+"PO-Revision-Date: 2018-10-12 17:22-0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: templates/about.html:11
+msgid "abouttext1"
+msgstr ""
+"This website was built as a Harvard and EdX's CS50x course final project "
+"in August 2018 by"
+
+#: templates/about.html:13
+msgid "abouttext2"
+msgstr "Please email me if you find any issues."
+
+#: templates/about.html:15
+msgid "abouttext3"
+msgstr "I hope you had a good meal/drink, and happy splitting! :)"
+
+#: templates/index.html:18
+msgid "welcome"
+msgstr "Welcome to Billsplit!"
+
+#: templates/layout.html:60
+msgid "splitabill"
+msgstr "Split a bill"
+
+#: templates/layout.html:61
+msgid "about"
+msgstr "About"
+
+#: templates/result.html:9
+msgid "done"
+msgstr "Done! See how much each person must pay below:"
+
+#: templates/result.html:17
+msgid "totalbillvalue"
+msgstr "Total bill value"
+
+#: templates/result.html:21
+msgid "howmuchtopay"
+msgstr "Bill split! See how much each person should pay:"
+
+#: templates/result.html:22
+msgid "totalvalue"
+msgstr "Total value"
+
+#: templates/result.html:28
+msgid "anotherbill"
+msgstr "Split another bill"
+
+#: templates/split.html:20
+msgid "describeitemconsumed"
+msgstr "Please describe the item consumed below"
+
+#: templates/split.html:24
+msgid "product"
+msgstr "Product"
+
+#: templates/split.html:27
+msgid "pepperonipizza"
+msgstr "Pepperoni Pizza"
+
+#: templates/split.html:31
+msgid "quantity"
+msgstr "Quantity"
+
+#: templates/split.html:39
+msgid "price"
+msgstr "Price"
+
+#: templates/split.html:48
+msgid "whoconsumed"
+msgstr "Who consumed"
+
+#: templates/split.html:52
+msgid "consumed"
+msgstr "consumed"
+
+#: templates/split.html:62
+msgid "removeproduct"
+msgstr "REMOVE PRODUCT"
+
+#: templates/split.html:73
+msgid "add"
+msgstr "add"
+
+#: templates/split.html:76
+msgid "tiphint"
+msgstr ""
+"If you're also giving a tip, please type the percentage (e.g. if giving a"
+" 15% tip, type 15 below):"
+
+#: templates/split.html:95
+msgid "splitbillsubmit"
+msgstr "Split this bill for me!"
+

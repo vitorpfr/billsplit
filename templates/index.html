@@ -7,48 +7,52 @@
 {% block main %}
 
 
-<div class="row">
+    <div class="row">
 
-<div class="control-group" id="fields">
-<div class="controls">
+        <div class="control-group" id="fields">
+            <div class="controls">
 
-<form id="form" autocomplete="off" role="form" action="/split" method="post">
+                <form id="form" autocomplete="off" role="form" action="/split" method="post">
 
-    <div class="mdl-cell mdl-cell--12-col">
-	<h5>Welcome to Billsplit!</h5>
-	<h6>Please type the names of those who are splitting the bill:</h6>
-    </div>
-    <div class="mdl-cell mdl-cell--8-col">
-        <div class="form-group">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h5>{{ _('welcome') }}</h5>
+                        <h6>Please type the names of those who are splitting the bill:</h6>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col">
+                        <div class="form-group">
 
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="form-control mdl-textfield__input" id="p1" placeholder="e.g. John" name="fields[]" type="text" autofocus/>
+                            <div class="mdl-textfield mdl-js-textfield">
+                                <input class="form-control mdl-textfield__input" id="p1" placeholder="e.g. John"
+                                       name="fields[]" type="text" autofocus/>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab btn-add"
+                                type="button">
+                            <i class="material-icons">add</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab btn-remove"
+                                type="button">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </div>
+
             </div>
-
         </div>
 
+
+        <div class="mdl-cell mdl-cell--1-col">
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised submitbutton" id="submitbutton">
+                Continue
+            </button>
+        </div>
+
+
+        </form>
     </div>
-    <div class="mdl-cell mdl-cell--4-col">
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab btn-add" type="button">
-        <i class="material-icons">add</i>
-        </button>
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab btn-remove" type="button">
-        <i class="material-icons">delete</i>
-        </button>
-    </div>
-
-</div>
-</div>
-
-
-
-<div class="mdl-cell mdl-cell--1-col">
-<button type="submit" class="mdl-button mdl-js-button mdl-button--raised submitbutton" id="submitbutton">Continue</button>
-</div>
-
-
-</form>
-</div>
 
 
 
