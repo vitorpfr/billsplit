@@ -6,23 +6,27 @@
 
 {% block main %}
 
-<h4>Done! See how much each person must pay below:</h4>
+    <h4>{{ _('done') }}</h4>
 
 
-{% for item in spend %}
-<p>{{ item }} : {{ spend[item] }}</p>
-{% endfor %}
+    {% for item in spend %}
+        <p>{{ item }} : {{ spend[item] }}</p>
+    {% endfor %}
 
 
-<h4>Total bill value:</h4>
-<h6>{{ bill }}</h6>
+    <h4>{{ _('totalbillvalue') }}:</h4>
+    <h6>{{ bill }}</h6>
 
-<div class="sharethis-inline-share-buttons st-custom-button" data-title="Billsplit" data-description="test" data-url="Bill split! See how much each person should pay: {% for item in spend %}{{ item }}: {{ spend[item] }} | {% endfor %} Total value: {{ bill }}"></div>
+    <div class="sharethis-inline-share-buttons st-custom-button" data-title="Billsplit" data-description="test"
+         data-url="{{ _('howmuchtopay') }}
+{% for item in spend %}{{ item }}: {{ spend[item] }} | {% endfor %} {{ _('totalvalue') }}: {{ bill }}"></div>
 
-<br>
+    <br>
 
-<div><form action="/" method="get">
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Split another bill</button>
-</form></div>
+    <div>
+        <form action="/" method="get">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">{{ _('anotherbill') }}</button>
+        </form>
+    </div>
 
 {% endblock %}
