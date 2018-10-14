@@ -4,7 +4,7 @@
 
 from tempfile import mkdtemp
 
-from flask import Flask, session, render_template, request, g
+from flask import Flask, session, render_template, request, g, redirect
 from flask_babel import Babel
 from flask_babel import gettext
 from flask_session import Session
@@ -14,9 +14,10 @@ from helpers import Person
 from helpers import brl
 
 # Configure application
+languages = {'en': "English", 'pt': "Portuguese"}
 app = Flask(__name__)
 babel = Babel(app)
-app.jinja_env.globals.update(_=gettext, g=g)
+app.jinja_env.globals.update(_=gettext, g=g, languages=languages)
 
 
 @app.before_request
@@ -43,23 +44,19 @@ def get_locale():
     if language is not None:
         return language
     for lang in request.accept_languages.values():
-        if lang[:2] in ['pt', 'en']:
+        if lang[:2] in languages.keys():
             language = lang[:2]
             break
 
     return language
 
 
-@app.route("/getlanguage")
-def get_language():
-    return get_locale()
-
-
-@app.route("/setlanguage/<l>")
-def set_language(l):
-    session['language'] = l
-    return l
-
+@app.route("/language/<lang>")
+def set_language(lang):
+    session['language'] = lang
+    if hasattr(request, 'referrer'):
+        return redirect(request.referrer)
+    return redirect('/')
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()

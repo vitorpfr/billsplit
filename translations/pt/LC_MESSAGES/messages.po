@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-13 00:25-0400\n"
+"POT-Creation-Date: 2018-10-13 23:17-0400\n"
 "PO-Revision-Date: 2018-10-12 17:20-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt\n"
@@ -34,11 +34,15 @@ msgstr ""
 msgid "welcome"
 msgstr "Bem-vindo a Billsplit"
 
-#: templates/layout.html:60
-msgid "splitabill"
+#: templates/index.html:19
+msgid "instructions"
 msgstr ""
 
 #: templates/layout.html:61
+msgid "splitabill"
+msgstr ""
+
+#: templates/layout.html:62
 msgid "about"
 msgstr ""
 
