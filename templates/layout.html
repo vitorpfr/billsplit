@@ -67,7 +67,7 @@
             {% if g.language != iso %}
             <a href="/language/{{ iso }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">{{ human_readable }}</a>
             {% else %}
-            <a href="/language/{{ iso }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" disabled>{{ human_readable }}</a>
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" disabled>{{ human_readable }}</a>
             {% endif %}
         {% endfor %}
         </div>
