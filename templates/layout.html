@@ -64,11 +64,7 @@
         </nav>
         <div class="mdl-card__actions mdl-card--border">
         {% for iso, human_readable in languages.items() %}
-            {% if g.language != iso %}
-            <a href="/language/{{ iso }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">{{ human_readable }}</a>
-            {% else %}
-            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" disabled>{{ human_readable }}</a>
-            {% endif %}
+            <a {% if g.language != iso %} href="/language/{{ iso }}" {% else %} disabled {% endif %} class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">{{ human_readable }}</a>
         {% endfor %}
         </div>
     </div>
