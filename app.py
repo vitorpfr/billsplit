@@ -11,7 +11,7 @@ from flask_session import Session
 
 # Import class created to handle spend and format function
 from helpers import Person
-from helpers import brl
+from helpers import format_as_brl
 
 # Configure application
 languages = {'en': "English", 'pt': "Portuguese"}
@@ -58,6 +58,7 @@ def set_language(lang):
         return redirect(request.referrer)
     return redirect('/')
 
+
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
@@ -90,7 +91,6 @@ def split():
     return render_template("split.html", people=session['people'])
 
 
-# Result page - where the calculation logic happens and the values are presented to the user
 @app.route("/result", methods=["POST"])
 def result():
     """program calculates result and shows to user"""
@@ -108,7 +108,7 @@ def result():
 
     people = session['people']
 
-    # Get which person consumed each product (binary) and write on the 'consumed' matrix
+    # Get which person consumed each product and write on the 'consumed' matrix
     consumed = []
     for i, item in enumerate(people):  # iterate through each person
         temp1 = []
@@ -121,21 +121,14 @@ def result():
             temp1.append(temp2)
         consumed.append(temp1)
 
-    # Normalize results from 'consumed' matrix -> calculate the fraction each one consumed
+    # Normalize results and calculate the fraction each one consumed
     for column in range(len(consumed[0])):  # for each column
         sumofcolumn = sum(row[column]
                           for row in consumed)  # get sum of the column
 
         for row in consumed:  # for each number in the matrix
-            # divide the original value by the total sum of column (normalize column)
+            # divide the original value by the total sum of column
             row[column] = row[column] / sumofcolumn
-
-    # Validation
-    # print(people)
-    # print(products)
-    # print(quantities)
-    # print(values)
-    # print(consumed)
 
     # Create people objects and add all products spent
     spend = {}
@@ -153,14 +146,13 @@ def result():
                        float(consumed[i][j]))
 
         # register this person's total value
-        spend[name] = brl(p.totalspend() * tip)
-        billvalue += p.totalspend() * tip  # add this person's part to total value
+        spend[name] = format_as_brl(p.totalspend() * tip)
+        billvalue += p.totalspend() * tip  # add this person's part to the bill
 
-    # Final validation
-    # print(spend)
-    # print(billvalue)
-
-    return render_template("result.html", people=session['people'], spend=spend, bill=brl(billvalue))
+    return render_template("result.html",
+                           people=session['people'],
+                           spend=spend,
+                           bill=format_as_brl(billvalue))
 
 
 if __name__ == "__main__":
