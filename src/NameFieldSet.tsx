@@ -31,7 +31,7 @@ export class NamesFieldSet extends React.Component<any, INameFieldSetState>{
       return (<div key={ index }>
                 <TextField type="text"
                            label="Name"
-                           value={ this.state.names[index] } 
+                           value={ value } 
                            onChange={ this.changeName(index) }
                 />
               </div>);
@@ -50,7 +50,7 @@ export class NamesFieldSet extends React.Component<any, INameFieldSetState>{
               { names }
             </div>
             <Button variant="contained" color="primary">
-              Done
+              Split bill
             </Button>
         </CardContent>
       </Card>
