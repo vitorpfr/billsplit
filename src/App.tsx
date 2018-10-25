@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 import * as React from 'react';
 import './App.css';
+import { NamesFieldSet } from './NameFieldSet'
 
 class App extends React.Component {
   public render() {
@@ -29,6 +30,10 @@ class App extends React.Component {
               </Typography>
             </CardContent>
           </Card>
+          <Typography component="p">
+            Please type the names of those who are splitting the bill:
+          </Typography>
+          <NamesFieldSet/>
         </div>
       </div>
     );
