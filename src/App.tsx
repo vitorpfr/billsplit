@@ -30,10 +30,9 @@ class App extends React.Component {
               </Typography>
             </CardContent>
           </Card>
-          <Typography component="p">
-            Please type the names of those who are splitting the bill:
-          </Typography>
-          <NamesFieldSet/>
+          <div style={{marginTop: '16px'}}>
+            <NamesFieldSet/>
+          </div>
         </div>
       </div>
     );

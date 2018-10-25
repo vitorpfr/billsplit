@@ -1,3 +1,10 @@
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import IconButton from '@material-ui/core/IconButton';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import * as React from 'react';
 
 interface INameFieldSetState {
@@ -6,35 +13,47 @@ interface INameFieldSetState {
 
 export class NamesFieldSet extends React.Component<any, INameFieldSetState>{
   public state = {
-    names: []
+    names: ["", ""]
   }
 
-  private addHandler = this.add.bind(this);
-  private changeNameHandler = this.changeName.bind(this);
-
-  public add() {
+  public add = () => {
     this.setState({ names: [...this.state.names, ""] });
   }
 
-  public changeName(index: number) {
-    return (event: Event) => {
-      const newNames: string[] = [...this.state.names];
-      newNames[index] = (event.target as HTMLInputElement).value!;
-      this.setState({ names: newNames });
-    }
+  public changeName = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newNames: string[] = [...this.state.names];
+    newNames[index] = event.target.value!;
+    this.setState({ names: newNames });
   }
 
   public render () {
-    const names = this.state.names.map((element: Element, index: number) => {
-      return <input type="text" value={ this.state.names[index] } onChange={this.changeNameHandler(index)} key ={ index } />
+    const names = this.state.names.map((value: string, index: number) => {
+      return (<div key={ index }>
+                <TextField type="text"
+                           label="Name"
+                           value={ this.state.names[index] } 
+                           onChange={ this.changeName(index) }
+                />
+              </div>);
     });
 
-    return <div>
-      <button onClick={ this.addHandler }>Add</button>
-
-      <div className="inputs">
-        { names }
-      </div>
-    </div>
+    return (
+      <Card>
+        <CardContent>
+            <Typography component="p">
+              Who is splitting the bill? 
+              <IconButton aria-label="Add person" onClick={ this.add }>
+                <PersonAddIcon />
+              </IconButton>
+            </Typography>
+            <div className="inputs" style={{marginBottom: '16px'}}>
+              { names }
+            </div>
+            <Button variant="contained" color="primary">
+              Done
+            </Button>
+        </CardContent>
+      </Card>
+    );
   }
 }
