@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-10-13 23:17-0400\n"
+"POT-Creation-Date: 2018-10-31 23:43-0300\n"
 "PO-Revision-Date: 2018-10-12 17:20-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pt\n"
@@ -21,92 +21,100 @@ msgstr ""
 #: templates/about.html:11
 msgid "abouttext1"
 msgstr ""
+"Este site foi feito como projeto final do curso CS50x, disponibilizado "
+"por Harvard/EdX, em Agosto de 2018 por"
 
 #: templates/about.html:13
 msgid "abouttext2"
-msgstr ""
+msgstr "Por favor, nos envie um e-mail caso você encontre algum problema."
 
 #: templates/about.html:15
 msgid "abouttext3"
 msgstr ""
+"Espero que tenha tido uma boa refeição, e continue dividindo suas contas!"
+" :)"
 
 #: templates/index.html:18
 msgid "welcome"
-msgstr "Bem-vindo a Billsplit"
+msgstr ""
+"Bem-vindo ao Billsplit - Uma forma fácil de dividir sua conta entre "
+"amigos e saber exatamente quanto cada um irá pagar!"
 
 #: templates/index.html:19
 msgid "instructions"
-msgstr ""
+msgstr "Insira abaixo o nome das pessoas que irão dividir a conta"
 
 #: templates/layout.html:61
 msgid "splitabill"
-msgstr ""
+msgstr "Divida uma conta"
 
 #: templates/layout.html:62
 msgid "about"
-msgstr ""
+msgstr "Sobre"
 
 #: templates/result.html:9
 msgid "done"
-msgstr ""
+msgstr "Pronto! Veja abaixo quanto cada pessoa deve pagar:"
 
 #: templates/result.html:17
 msgid "totalbillvalue"
-msgstr ""
+msgstr "Valor total da conta"
 
 #: templates/result.html:21
 msgid "howmuchtopay"
-msgstr ""
+msgstr "A conta foi dividida! Veja abaixo quanto cada pessoa deve pagar"
 
 #: templates/result.html:22
 msgid "totalvalue"
-msgstr ""
+msgstr "Valor total"
 
 #: templates/result.html:28
 msgid "anotherbill"
-msgstr ""
+msgstr "Dividir outra conta"
 
 #: templates/split.html:20
 msgid "describeitemconsumed"
-msgstr ""
+msgstr "Por favor descreva o item consumido abaixo"
 
 #: templates/split.html:24
 msgid "product"
-msgstr ""
+msgstr "Produto"
 
 #: templates/split.html:27
 msgid "pepperonipizza"
-msgstr ""
+msgstr "Pizza de Calabresa"
 
 #: templates/split.html:31
 msgid "quantity"
-msgstr ""
+msgstr "Quantidade"
 
 #: templates/split.html:39
 msgid "price"
-msgstr ""
+msgstr "Preço"
 
 #: templates/split.html:48
 msgid "whoconsumed"
-msgstr ""
+msgstr "Quem consumiu"
 
 #: templates/split.html:52
 msgid "consumed"
-msgstr ""
+msgstr "consumed"
 
 #: templates/split.html:62
 msgid "removeproduct"
-msgstr ""
+msgstr "REMOVER PRODUTO"
 
 #: templates/split.html:73
 msgid "add"
-msgstr ""
+msgstr "add"
 
 #: templates/split.html:76
 msgid "tiphint"
 msgstr ""
+"Se você também estiver pagando taxa de serviço ou gorjeta, digite a "
+"porcentagem (ex.: se for pagar taxa de 10%, insira 10 abaixo)"
 
 #: templates/split.html:95
 msgid "splitbillsubmit"
-msgstr ""
+msgstr "Divida a conta para mim!"
 
