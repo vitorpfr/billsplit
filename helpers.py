@@ -22,3 +22,8 @@ class Person:
 def format_as_brl(value):
     """Format value as Brazilian reais."""
     return f"R${value:,.2f}"
+
+
+def format_as_usd(value):
+    """Format value as US Dollars."""
+    return f"${value:,.2f}"

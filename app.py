@@ -12,6 +12,7 @@ from flask_session import Session
 # Import class created to handle spend and format function
 from helpers import Person
 from helpers import format_as_brl
+from helpers import format_as_usd
 
 # Configure application
 languages = {'en': "English", 'pt': "Portuguese"}
@@ -34,6 +35,12 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+# Configure session to use filesystem (instead of signed cookies)
+app.config["SESSION_FILE_DIR"] = mkdtemp()
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
 
 # Get user's language
 
@@ -42,12 +49,13 @@ def after_request(response):
 def get_locale():
     language = session.get('language', None)
     if language is not None:
+        session['language'] = language
         return language
     for lang in request.accept_languages.values():
         if lang[:2] in languages.keys():
             language = lang[:2]
             break
-
+    session['language'] = language
     return language
 
 
@@ -57,13 +65,6 @@ def set_language(lang):
     if hasattr(request, 'referrer'):
         return redirect(request.referrer)
     return redirect('/')
-
-
-# Configure session to use filesystem (instead of signed cookies)
-app.config["SESSION_FILE_DIR"] = mkdtemp()
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
 
 
 # Index page - user inputs people who will pay the bill
@@ -149,10 +150,16 @@ def result():
         spend[name] = format_as_brl(p.totalspend() * tip)
         billvalue += p.totalspend() * tip  # add this person's part to the bill
 
+        # format bill value according to user's language
+        if session['language'] == 'pt':
+            formattedbillvalue = format_as_brl(billvalue)
+        else:
+            formattedbillvalue = format_as_usd(billvalue)
+
     return render_template("result.html",
                            people=session['people'],
                            spend=spend,
-                           bill=format_as_brl(billvalue))
+                           bill=formattedbillvalue)
 
 
 if __name__ == "__main__":
