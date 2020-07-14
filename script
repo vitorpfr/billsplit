@@ -1,0 +1,5 @@
+sudo yum install python36 git
+curl -O https://bootstrap.pypa.io/get-pip.py
+python3 get-pip.py --user
+export PATH="~/.local/bin:$PATH"
+pip install flask flask_session flask_babel Werkzeug==0.15
